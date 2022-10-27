@@ -1,3 +1,5 @@
+using Persistence;
+
 namespace WebApi
 {
     public class Program
@@ -8,10 +10,7 @@ namespace WebApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            AddServices(builder);
 
             var app = builder.Build();
 
@@ -30,6 +29,17 @@ namespace WebApi
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void AddServices(WebApplicationBuilder builder)
+        {
+            builder.Services.AddControllers();
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
         }
     }
 }
