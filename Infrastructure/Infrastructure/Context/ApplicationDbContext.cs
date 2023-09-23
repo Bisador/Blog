@@ -2,11 +2,12 @@
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.Context
+namespace Infrastructure.Context
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Writer> Writers { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {

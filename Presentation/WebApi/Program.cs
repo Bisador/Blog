@@ -1,6 +1,6 @@
-using Persistence;
+using Microsoft.OpenApi.Models; 
 
-namespace WebApi
+namespace Web
 {
     public class Program
     {
@@ -8,26 +8,16 @@ namespace WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
+            // Add services to the container. 
             AddServices(builder);
+             
+            var app = builder.Build(); 
+            Configurations(app, builder);
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
+            // Configure the HTTP request pipeline. 
+            app.UseHttpsRedirection(); 
+            app.UseAuthorization(); 
+            app.MapControllers(); 
             app.Run();
         }
 
@@ -37,9 +27,39 @@ namespace WebApi
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
 
-            builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+            #region Swagger
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.IncludeXmlComments(string.Format(@"{0}\CMS.xml", AppDomain.CurrentDomain.BaseDirectory));
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "CMS",
+                });
+            });
+            #endregion
+
+        }
+
+        private static void Configurations(WebApplication app, WebApplicationBuilder builder)
+        {
+            #region Swagger
+            if (app.Environment.IsDevelopment())
+            {
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
+                app.UseSwagger();
+
+                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+                // specifying the Swagger JSON endpoint.
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "CMS");
+                });
+            } 
+            #endregion
         }
     }
 }

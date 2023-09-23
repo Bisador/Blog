@@ -1,4 +1,6 @@
-﻿using Domain.Common;
+﻿
+using Domain.Common;
+using System;
 
 namespace Domain.Entities
 {
@@ -6,6 +8,7 @@ namespace Domain.Entities
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public Writer Writer { get; set; }
+        public DateTime PublishDate { get; set; }
+        public virtual Writer Writer { get; set; }
     }
 }

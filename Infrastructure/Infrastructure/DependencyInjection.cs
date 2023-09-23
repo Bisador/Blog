@@ -1,9 +1,10 @@
-﻿using Application.Interfaces;
+﻿
+using Application.Interfaces;
+using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Persistence.Context;
 
-namespace Persistence
+namespace Infrastructure
 {
     public static class DependencyInjection
     {
@@ -14,6 +15,10 @@ namespace Persistence
                 options.UseSqlServer(
                     connectionString: connectionString,
                     sqlServerOptionsAction: p => p.MigrationsAssembly(migrationsAssemblyName)));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //options.UseSqlServer(
+            //    configuration.GetConnectionString("DefaultConnection"),
+            //    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         }
     }
