@@ -1,5 +1,5 @@
-﻿
-using Domain.Entities;
+﻿using Domain.Entities.CMS;
+using Domain.Entities.Store;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
@@ -7,7 +7,7 @@ namespace Application.Interfaces;
 
 public interface IApplicationDbContext
 {
-    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Article> Blogs { get; set; }
     public DbSet<Writer> Writers { get; set; }
 
     int SaveChanges();

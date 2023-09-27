@@ -1,12 +1,13 @@
 ﻿using Application.Interfaces;
-using Domain.Entities;
+using Domain.Entities.CMS;
+using Domain.Entities.Store;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Article> Blogs { get; set; }
         public DbSet<Writer> Writers { get; set; }
 
         public async Task<int> SaveChangesAsync()
