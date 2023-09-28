@@ -1,4 +1,5 @@
-﻿using System; 
+﻿using Domain.Shared;
+using System;
 
 namespace Domain.Primitives
 {
@@ -9,10 +10,10 @@ namespace Domain.Primitives
             Id = id;
         }
         public Guid Id { get; private init; }
-         
+
         public static bool operator ==(Entity? first, Entity? second) => first is not null && first.Equals(second);
         public static bool operator !=(Entity? first, Entity? second) => !(first is not null && first.Equals(second));
-         
+
         public override bool Equals(object? obj)
         {
             if (obj is null ||
@@ -36,9 +37,6 @@ namespace Domain.Primitives
             return Id == other.Id;
         }
 
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode() * 13;
-        }
+        public override int GetHashCode() => Utility.HashCodeSalter(Id.GetHashCode());
     }
 }

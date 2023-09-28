@@ -1,7 +1,10 @@
 ﻿using Domain.Entities.CMS;
+using Domain.Entities.Store.Errors;
 using Domain.Primitives;
+using Domain.Shared;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.Entities.Store;
 
@@ -24,11 +27,23 @@ public sealed class Cart : Entity
         return cart;
     }
 
-    public CartItem AddItem(Guid id, Stuff stuff, decimal count)
+    public Result<CartItem> AddItem(Guid id, Stuff stuff, decimal count)
     {
+        if (stuff is null)
+        {
+            return Result.Failure<CartItem>(DomainErrors.CantInsertNullStuffIntoTheCart);
+        }
+        if (count <= 0)
+        {
+            return Result.Failure<CartItem>(DomainErrors.InvalidCount);
+        }
+        if (CartItems.Any(p => p.Stuff.Id == stuff.Id))
+        {
+            return Result.Failure<CartItem>(DomainErrors.StuffIsAlreadyExistsInCartError);
+        }
+
         var cartItem = CartItem.Create(id, this, stuff, count);
         _cartItems.Add(cartItem);
         return cartItem;
     }
-
 }

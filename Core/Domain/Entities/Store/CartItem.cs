@@ -17,7 +17,7 @@ public sealed class CartItem : Entity
     public decimal Count { get; private set; }
 
     public static CartItem Create(Guid id, Cart cart, Stuff stuff, decimal count)
-    {
+    { 
         var cartItem = new CartItem(id, cart, stuff, count);
         return cartItem;
     }
