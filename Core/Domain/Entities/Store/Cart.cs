@@ -1,5 +1,4 @@
-﻿using Domain.Entities.CMS;
-using Domain.Entities.Store.Errors;
+﻿using Domain.Entities.Store.Errors;
 using Domain.Primitives;
 using Domain.Shared;
 using System;
@@ -8,7 +7,7 @@ using System.Linq;
 
 namespace Domain.Entities.Store;
 
-public sealed class Cart : Entity
+public sealed class Cart : AggregateRoot
 {
     private Cart(Guid id, Customer customer, DateTime createdDateTime) : base(id)
     {

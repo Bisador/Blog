@@ -4,7 +4,7 @@ using System;
 
 namespace Domain.Entities.Store;
 
-public sealed class Customer : Entity
+public sealed class Customer : AggregateRoot
 {
     private Customer(Guid id, Person person) : base(id)
     {

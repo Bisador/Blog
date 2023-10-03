@@ -3,7 +3,7 @@ using System;
 
 namespace Domain.Entities.Core;
 
-public class Person : Entity
+public class Person : AggregateRoot
 {
     private Person(Guid id, string firstName, string lastName, DateOnly birthDate, string emailAddress) : base(id)
     {

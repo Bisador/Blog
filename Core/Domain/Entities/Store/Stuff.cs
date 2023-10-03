@@ -3,7 +3,7 @@ using System;
 
 namespace Domain.Entities.Store;
 
-public sealed class Stuff : Entity
+public sealed class Stuff : AggregateRoot
 {
     private Stuff(Guid id, string name) : base(id)
     {

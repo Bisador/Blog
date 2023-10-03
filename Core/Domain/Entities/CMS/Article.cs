@@ -3,7 +3,7 @@ using System;
 
 namespace Domain.Entities.CMS
 {
-    public sealed class Article : Entity
+    public sealed class Article : AggregateRoot
     {
         private Article(
             Guid id,

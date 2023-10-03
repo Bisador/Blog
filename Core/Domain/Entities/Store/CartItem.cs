@@ -16,7 +16,7 @@ public sealed class CartItem : Entity
     public Stuff Stuff { get; private set; }
     public decimal Count { get; private set; }
 
-    public static CartItem Create(Guid id, Cart cart, Stuff stuff, decimal count)
+    internal static CartItem Create(Guid id, Cart cart, Stuff stuff, decimal count)
     { 
         var cartItem = new CartItem(id, cart, stuff, count);
         return cartItem;

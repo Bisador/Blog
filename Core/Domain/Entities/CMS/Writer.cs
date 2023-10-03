@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities.CMS
 {
-    public sealed class Writer : Entity
+    public sealed class Writer : AggregateRoot
     {
         private Writer(Guid id, string name, Person person) : base(id)
         {
