@@ -1,11 +1,11 @@
-﻿using Domain.Entities.Store.Errors;
-using Domain.Primitives;
+﻿using Domain.Primitives;
 using Domain.Shared;
+using Domain.Store.Entities.Errors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain.Entities.Store;
+namespace Domain.Store.Entities;
 
 public sealed class Cart : AggregateRoot
 {

@@ -1,8 +1,8 @@
-﻿using Domain.Entities.Core;
+﻿using Domain.Core.Entities;
 using Domain.Primitives;
 using System;
 
-namespace Domain.Entities.Store;
+namespace Domain.Store.Entities;
 
 public sealed class Customer : AggregateRoot
 {

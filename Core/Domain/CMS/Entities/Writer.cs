@@ -1,9 +1,9 @@
-﻿using Domain.Entities.Core;
+﻿using Domain.Core.Entities;
 using Domain.Primitives;
 using System;
 using System.Collections.Generic;
 
-namespace Domain.Entities.CMS
+namespace Domain.CMS.Entities
 {
     public sealed class Writer : AggregateRoot
     {
@@ -19,7 +19,7 @@ namespace Domain.Entities.CMS
 
         public IReadOnlyCollection<Article> Articles => _articles;
 
-        public Writer Create(
+        public static Writer Create(
             Guid id,
             string name,
             Person person)

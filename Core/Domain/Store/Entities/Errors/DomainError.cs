@@ -1,8 +1,6 @@
-﻿
+﻿using Domain.Shared;
 
-using Domain.Shared;
-
-namespace Domain.Entities.Store.Errors
+namespace Domain.Store.Entities.Errors
 {
     public static class DomainErrors
     {
@@ -12,7 +10,7 @@ namespace Domain.Entities.Store.Errors
         public static readonly Error CantInsertNullStuffIntoTheCart = new(
             code: "Cart.NullStuff",
             message: "Can't insert null stuff into the cart.");
-        public static readonly Error InvalidCount= new(
+        public static readonly Error InvalidCount = new(
             code: "Cart.InvalidCount",
             message: "Invalid count.");
     }

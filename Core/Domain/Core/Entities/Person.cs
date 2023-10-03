@@ -1,7 +1,7 @@
 ﻿using Domain.Primitives;
 using System;
 
-namespace Domain.Entities.Core;
+namespace Domain.Core.Entities;
 
 public class Person : AggregateRoot
 {

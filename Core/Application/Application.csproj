@@ -14,8 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\BlogFeatures\Commands\" />
-    <Folder Include="Features\BlogFeatures\Queries\" />
+    <Folder Include="Core\" />
+    <Folder Include="Features\BlogFeatures\" />
+    <Folder Include="Store\" />
+    <Folder Include="CMS\Article\Commands\" />
+    <Folder Include="CMS\Article\Queries\" />
   </ItemGroup>
 
 </Project>

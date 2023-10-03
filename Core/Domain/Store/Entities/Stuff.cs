@@ -1,7 +1,7 @@
 ﻿using Domain.Primitives;
 using System;
 
-namespace Domain.Entities.Store;
+namespace Domain.Store.Entities;
 
 public sealed class Stuff : AggregateRoot
 {

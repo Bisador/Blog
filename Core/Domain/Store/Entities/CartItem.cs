@@ -1,7 +1,7 @@
 ﻿using Domain.Primitives;
 using System;
 
-namespace Domain.Entities.Store;
+namespace Domain.Store.Entities;
 
 public sealed class CartItem : Entity
 {
@@ -17,7 +17,7 @@ public sealed class CartItem : Entity
     public decimal Count { get; private set; }
 
     internal static CartItem Create(Guid id, Cart cart, Stuff stuff, decimal count)
-    { 
+    {
         var cartItem = new CartItem(id, cart, stuff, count);
         return cartItem;
     }

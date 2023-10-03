@@ -1,10 +1,4 @@
-﻿
-
-
-using Domain.Entities.Store;
-using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
+﻿  
 namespace Domain.Shared
 {
     public class Result
@@ -22,14 +16,6 @@ namespace Domain.Shared
 
         public static implicit operator bool(Result result) => result.IsSuccess;
 
-        internal static Result<TValue> Failure<TValue>(Error error) => new(default, isSuccess: false, error: error);
-
-        internal static Result<TValue> Failure<TValue, TError>()
-        {
-            new(default, isSuccess: false, error: TError.);
-        }
-
-        //public static Result<TValue> Failure<TValue>(TValue value) => new(value,false,);
-
+        internal static Result<TValue> Failure<TValue>(Error error) => new(default, isSuccess: false, error: error); 
     }
 }
