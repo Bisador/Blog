@@ -11,13 +11,13 @@ public class ArchitectureTests
     private const string InfrastructureNameSpace = nameof(Infrastructure);
     private const string PresentationNameSpace = nameof(Presentation);
     private const string WebNameSpace = nameof(Web);
-     
+
 
     [Test]
     public void Domain_Should_Not_HaveDependenciesOnOtherProjects()
-    { 
+    {
         //Arrange
-        var assembly = Assembly.GetAssembly(typeof(Domain.Primitives.AggregateRoot));
+        var assembly = Assembly.GetAssembly(typeof(Domain.CMS.Article.Entities.Article));
         var otherProjects = new[] {
             ApplicationNameSpace,
             InfrastructureNameSpace,
@@ -39,7 +39,7 @@ public class ArchitectureTests
     public void Handlers_Should_HaveDependencyOnDomain()
     {
         //Arrange
-        var assembly = Assembly.GetAssembly(typeof(Application.Interfaces.IApplicationDbContext)); 
+        var assembly = Assembly.GetAssembly(typeof(Application.Interfaces.IApplicationDbContext));
 
         //Act
         var testResult = Types
@@ -49,7 +49,7 @@ public class ArchitectureTests
             .Should()
             .HaveDependencyOn(DomainNameSpace)
             .GetResult();
-        
+
         //Assert
         testResult
             .IsSuccessful.Should().Be(true);
@@ -60,7 +60,7 @@ public class ArchitectureTests
     {
         //Arrange
         var assembly = Assembly.GetAssembly(typeof(Application.Interfaces.IApplicationDbContext));
-        var otherProjects = new[] { 
+        var otherProjects = new[] {
             InfrastructureNameSpace,
             PresentationNameSpace,
             WebNameSpace,
@@ -81,7 +81,7 @@ public class ArchitectureTests
     {
         //Arrange
         var assembly = Assembly.GetAssembly(typeof(Infrastructure.Context.ApplicationDbContext));
-        var otherProjects = new[] { 
+        var otherProjects = new[] {
             PresentationNameSpace,
             WebNameSpace,
         };
@@ -101,7 +101,7 @@ public class ArchitectureTests
     {
         //Arrange
         var assembly = Assembly.GetAssembly(typeof(Presentation.Controllers.WeatherForecastController));
-        var otherProjects = new[] { 
+        var otherProjects = new[] {
             WebNameSpace,
         };
         //Act

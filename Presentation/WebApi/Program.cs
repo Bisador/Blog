@@ -1,3 +1,5 @@
+using Application;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.OpenApi.Models; 
 
 namespace Web
@@ -15,21 +17,28 @@ namespace Web
             Configurations(app, builder);
 
             // Configure the HTTP request pipeline. 
+            //app.MapGet("/api/about", (string name) => Results.Ok("Hi "+ name)).Produces(StatusCodes.Status200OK);
             app.UseHttpsRedirection(); 
             app.UseAuthorization(); 
             app.MapControllers(); 
             app.Run();
+
         }
 
         private static void AddServices(WebApplicationBuilder builder)
         {
+
+            builder.Services.RegisterApplicationServices();
             builder.Services.AddControllers();
+
+            var presentationAssembly = typeof(Presentation.Controllers.ArticleController).Assembly; 
+            builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
+             
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             //builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
-
-
+             
             #region Swagger
             builder.Services.AddSwaggerGen(c =>
             {
@@ -42,10 +51,11 @@ namespace Web
             });
             #endregion
 
+            
         }
 
         private static void Configurations(WebApplication app, WebApplicationBuilder builder)
-        {
+        { 
             #region Swagger
             if (app.Environment.IsDevelopment())
             {
