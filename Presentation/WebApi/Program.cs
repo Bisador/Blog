@@ -1,5 +1,6 @@
 using Application;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models; 
 
 namespace Web
@@ -28,16 +29,7 @@ namespace Web
         private static void AddServices(WebApplicationBuilder builder)
         {
 
-            builder.Services.RegisterApplicationServices();
-            builder.Services.AddControllers();
-
-            var presentationAssembly = typeof(Presentation.Controllers.ArticleController).Assembly; 
-            builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
-             
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            //builder.Services.AddPersistence(builder.Configuration.GetConnectionString("DefaultConnection"));
+            builder.Services.RegisterApplicationServices(); 
              
             #region Swagger
             builder.Services.AddSwaggerGen(c =>
@@ -51,11 +43,15 @@ namespace Web
             });
             #endregion
 
-            
+             
         }
 
         private static void Configurations(WebApplication app, WebApplicationBuilder builder)
-        { 
+        {
+            builder.Services.AddControllers();
+            var presentationAssembly = typeof(Presentation.Controllers.ArticleController).Assembly;
+            builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
+            builder.Services.AddEndpointsApiExplorer(); 
             #region Swagger
             if (app.Environment.IsDevelopment())
             {
@@ -68,8 +64,10 @@ namespace Web
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CMS");
                 });
-            } 
+            }
             #endregion
+
+
         }
     }
 }

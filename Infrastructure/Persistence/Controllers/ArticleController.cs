@@ -39,7 +39,8 @@ public class ArticleController : BaseController
             WriterId: Guid.NewGuid()
         );
         var result = await Mediator.Send(command, cancellationToken);
-        return CreatedAtAction(actionName, new { result }, result);
+        //return ID
+        return result.IsSuccess ? CreatedAtAction(actionName, new { result }, result) : BadRequest(result.Error); 
     }
 
 }
