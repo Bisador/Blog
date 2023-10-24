@@ -1,4 +1,4 @@
-﻿using Domain.CMS.Article.Events; 
+﻿using Domain.CMS.ArticleAggregate.Events; 
 
 namespace Application.CMS.Article.Events;
 

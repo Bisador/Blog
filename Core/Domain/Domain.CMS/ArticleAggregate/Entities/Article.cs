@@ -1,11 +1,11 @@
 ﻿
-using Domain.CMS.Article.Events;
+using Domain.CMS.ArticleAggregate.Events;
 using Domain.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain.CMS.Article.Entities;
+namespace Domain.CMS.ArticleAggregate.Entities;
 
 public sealed class Article : AggregateRoot<Guid>
 {

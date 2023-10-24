@@ -17,7 +17,7 @@ public class ArchitectureTests
     public void Domain_Should_Not_HaveDependenciesOnOtherProjects()
     {
         //Arrange
-        var assembly = Assembly.GetAssembly(typeof(Domain.CMS.Article.Entities.Article));
+        var assembly = Assembly.GetAssembly(typeof(Domain.CMS.ArticleAggregate.Entities.Article));
         var otherProjects = new[] {
             ApplicationNameSpace,
             InfrastructureNameSpace,

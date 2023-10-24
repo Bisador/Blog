@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Features\BlogFeatures\" />
     <Folder Include="Store\" />
-    <Folder Include="Article\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Domain.CMS.Writer.Entities;
+namespace Domain.CMS.WriterAggregate.Entities;
 
 public sealed class Writer : AggregateRoot<Guid>
 {

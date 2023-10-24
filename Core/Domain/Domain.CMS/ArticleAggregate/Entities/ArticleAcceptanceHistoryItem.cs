@@ -2,7 +2,7 @@
 using Domain.Shared;
 using System;
 
-namespace Domain.CMS.Article.Entities;
+namespace Domain.CMS.ArticleAggregate.Entities;
 
 public sealed class ArticleAcceptanceHistoryItem : Entity<int>
 {

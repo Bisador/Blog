@@ -1,7 +1,7 @@
 ﻿
 using Application.Interfaces;
-using Domain.CMS.Article.Entities;
-using Domain.CMS.Writer.Entities;
+using Domain.CMS.ArticleAggregate.Entities;
+using Domain.CMS.WriterAggregate.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context
