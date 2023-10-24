@@ -1,5 +1,5 @@
-﻿
-using Application.CMS.Article.Commands;
+﻿ 
+using Application.CMS.Article.Commands.Create;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Shared;

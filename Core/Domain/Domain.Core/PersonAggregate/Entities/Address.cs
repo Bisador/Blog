@@ -1,16 +1,14 @@
-﻿
-
-using Domain.Abstraction;
+﻿using Domain.Abstraction;
 
 namespace Domain.Core.PersonAggregate.Entities;
 
 public class Address : ValueObject
 {
-    public string Street { get; private set; }
-    public string City { get; private set; }
-    public string State { get; private set; }
-    public string Country { get; private set; }
-    public string ZipCode { get; private set; }
+    public string? Street { get; private set; }
+    public string? City { get; private set; }
+    public string? State { get; private set; }
+    public string? Country { get; private set; }
+    public string? ZipCode { get; private set; }
 
     public Address() { }
 
@@ -22,8 +20,8 @@ public class Address : ValueObject
         Country = country;
         ZipCode = zipCode;
     }
-     
-    protected override IEnumerable<object> GetEqualityComponents()
+
+    protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Street;
         yield return City;
